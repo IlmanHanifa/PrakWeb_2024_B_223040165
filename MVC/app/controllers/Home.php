@@ -1,13 +1,13 @@
-<?php 
+<?php
 
-class Home {
-    public function __construct()
+class Home extends Controller
+{
+    public function index()
     {
-        $url = $this->parseURL();
-
-        if ( file_exists('../app/controllers/' . $url[0] . '.php') ) {
-            
-        }
+        $data['judul'] = 'Home';
+        $data['nama'] = $this->model('User_model')->getUSer();
+        $this->view('templates/header', $data);
+        $this->view('home/index');
+        $this->view('templates/footer');
     }
 }
-?>
